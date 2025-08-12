@@ -786,6 +786,8 @@ def build_model(args: Namespace, model_idx=0):
         args.output_size = 1
 
     if args.parser_name == "fingerprint":
+        if not hasattr(args, 'dropout'):
+            args.dropout = 0
         model = GroverFpGeneration(args)
     else:
         # finetune and evaluation case.
